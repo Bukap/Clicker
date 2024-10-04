@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    private GameManager gameManager;
 
     [SerializeField] public float MaxHealthPoints;
     [SerializeField] public float CurrentHealthPoints;
@@ -15,6 +16,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.Find("MainCamera").GetComponent<GameManager>();    
+
         CurrentHealthPoints = MaxHealthPoints;
         UIHealthDisplay = GameObject.Find("HealthBar");
 
@@ -31,11 +34,20 @@ public class Enemy : MonoBehaviour
     {
         CurrentHealthPoints -= damage;
         healthToUIBar();
+
+        deathCheck();
     }
 
     private void healthToUIBar()
     {
-        UIHealthDisplay.GetComponent<RectTransform>().sizeDelta = new Vector2(1000f*(CurrentHealthPoints/MaxHealthPoints), UIHealthDisplay.GetComponent<RectTransform>().sizeDelta.y);
+        UIHealthDisplay.GetComponent<RectTransform>().sizeDelta = new Vector2(gameManager.UIHealthBarMaxWidth * (CurrentHealthPoints/MaxHealthPoints), UIHealthDisplay.GetComponent<RectTransform>().sizeDelta.y);
     }
 
+    private void deathCheck()
+    {
+        if (CurrentHealthPoints <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
