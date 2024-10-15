@@ -6,37 +6,50 @@ public class GameManager : MonoBehaviour
 {
     private EnemyManager enemyManager;
 
-    private GameObject currentEnemy;
+    private HeroManager heroManager; 
 
     [HideInInspector]
     public float UIHealthBarMaxWidth;
 
+    private float oneSecond = 1;
+    private float timer;
 
     private void Awake()
     {
         UIHealthBarMaxWidth = GameObject.Find("HealthBar").GetComponent<RectTransform>().sizeDelta.x;
-        currentEnemy = GameObject.Find("CurrentEnemy");
     }
 
     void Start()
     {
         enemyManager = GetComponent<EnemyManager>();
+        heroManager = GetComponent<HeroManager>();
+
+        enemyManager.CreateEnemy();
     }
 
 
 
     void FixedUpdate()
     {
-        if(currentEnemy.transform.childCount == 0)
+        
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
         {
-            CreateEnemy();
+            enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.TapDamage);
+        }
+
+        timer += Time.deltaTime;
+        if (timer > oneSecond)
+        {
+            enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.PerSecondDamage);
+            timer = 0;
         }
     }
 
-    private void CreateEnemy()
-    {
-        Instantiate(enemyManager.enemies[Random.Range(0, enemyManager.enemies.Count)], currentEnemy.transform);
-    }
+
 
 
 

@@ -13,16 +13,24 @@ PrefabInstance:
       value: Enemy3
       objectReference: {fileID: 0}
     - target: {fileID: 4597920623551804998, guid: 72746155ea123e84783bc401de7cb6ad, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597920623551804998, guid: 72746155ea123e84783bc401de7cb6ad, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -662902435344139210, guid: 6082137cebedbd041aef54bcd8e06766, type: 3}
+    - target: {fileID: 4597920623551804998, guid: 72746155ea123e84783bc401de7cb6ad, type: 3}
       propertyPath: m_Color.b
-      value: 0.114542544
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4597920623551804998, guid: 72746155ea123e84783bc401de7cb6ad, type: 3}
       propertyPath: m_Color.g
-      value: 0.735849
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4597920623551804998, guid: 72746155ea123e84783bc401de7cb6ad, type: 3}
       propertyPath: m_Color.r
-      value: 0.24109687
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7002453343683129019, guid: 72746155ea123e84783bc401de7cb6ad, type: 3}
       propertyPath: m_Pivot.x
@@ -103,6 +111,14 @@ PrefabInstance:
     - target: {fileID: 7002453343683129019, guid: 72746155ea123e84783bc401de7cb6ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050050919393663183, guid: 72746155ea123e84783bc401de7cb6ad, type: 3}
+      propertyPath: MaxHealthPoints
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596693911899033548, guid: 72746155ea123e84783bc401de7cb6ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
