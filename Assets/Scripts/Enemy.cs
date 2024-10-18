@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    private GameManager gameManager;
-    private EnemyManager enemyManager;
+    public GameManager gameManager;
+    public EnemyManager enemyManager;
 
     [SerializeField] public float MaxHealthPoints;
     [SerializeField] public float CurrentHealthPoints;
@@ -16,10 +16,9 @@ public class Enemy : MonoBehaviour
         gameManager = GameObject.Find("MainCamera").GetComponent<GameManager>();
         enemyManager = GameObject.Find("MainCamera").GetComponent<EnemyManager>(); 
         
-
         CurrentHealthPoints = MaxHealthPoints;
 
-        enemyManager.healthToUIBar();
+        enemyManager.healthToUIBar_deathCheck();
     }
 
     // Update is called once per frame
@@ -31,19 +30,10 @@ public class Enemy : MonoBehaviour
     public void DamageEnemy(float damage)
     {
         CurrentHealthPoints -= damage;
-        enemyManager.healthToUIBar();
-
-        deathCheck();
+        enemyManager.healthToUIBar_deathCheck();
     }
 
     
 
-    private void deathCheck()
-    {
-        if (CurrentHealthPoints <= 0)
-        {
-            Destroy(this.gameObject);
-            enemyManager.CreateEnemy();
-        }
-    }
+    
 }

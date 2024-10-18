@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
         enemyManager = GetComponent<EnemyManager>();
         heroManager = GetComponent<HeroManager>();
 
-        enemyManager.CreateEnemy();
     }
 
 
@@ -36,17 +35,21 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        #region tapDamageCall
         if (Input.GetMouseButtonDown(0))
         {
             enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.TapDamage);
         }
+        #endregion
 
+        #region damagePerSecondCall
         timer += Time.deltaTime;
         if (timer > oneSecond)
         {
             enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.PerSecondDamage);
             timer = 0;
         }
+        #endregion
     }
 
 
