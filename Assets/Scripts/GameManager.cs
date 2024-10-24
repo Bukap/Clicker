@@ -11,12 +11,24 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public float UIHealthBarMaxWidth;
 
+    [SerializeField] private GameObject bossBar;
+    [SerializeField] private float maxBossBarWidthUI;
+    [SerializeField] private float currentBossBarWidthUI;
+    [SerializeField] private float maxBossBarPoints;
+    [SerializeField] public float currentBossBarPoints;
+    [SerializeField] private float bossBarPointPerKill;
+    [SerializeField] private float bossBarPointsToWidthUI;
+    private GameObject startBossButton;
+
     private float oneSecond = 1;
     private float timer;
 
     private void Awake()
     {
         UIHealthBarMaxWidth = GameObject.Find("HealthBar").GetComponent<RectTransform>().sizeDelta.x;
+        bossBar = GameObject.Find("BossBar");
+
+        startBossButton = GameObject.Find("StartBoss");
     }
 
     void Start()
@@ -24,6 +36,10 @@ public class GameManager : MonoBehaviour
         enemyManager = GetComponent<EnemyManager>();
         heroManager = GetComponent<HeroManager>();
 
+        maxBossBarWidthUI = bossBar.GetComponent<RectTransform>().sizeDelta.x;
+        bossBarPointsToWidthUI = maxBossBarWidthUI / maxBossBarPoints;
+
+        BossBarUIUpdate();
     }
 
 
@@ -51,6 +67,31 @@ public class GameManager : MonoBehaviour
         }
         #endregion
     }
+
+    public void BossBarPointsUpdate()
+    {
+        if (!enemyManager.currentEnemy.name.Contains("Boss"))
+        {
+            currentBossBarPoints += bossBarPointPerKill;
+        }
+    }
+
+    public void BossBarUIUpdate()
+    {
+        if (currentBossBarPoints >= maxBossBarPoints)
+        {
+            startBossButton.SetActive(true);
+            currentBossBarPoints = maxBossBarPoints;
+        }
+        else
+        {
+            startBossButton.SetActive(false);
+        }
+
+        currentBossBarWidthUI = currentBossBarPoints * bossBarPointsToWidthUI;
+        bossBar.GetComponent<RectTransform>().sizeDelta = new Vector2(currentBossBarWidthUI, bossBar.GetComponent<RectTransform>().sizeDelta.y);
+    }
+
 
 
 

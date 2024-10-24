@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
     private GameManager gameManager;
 
     [SerializeField] public List<GameObject> enemies;
+    [SerializeField] public List<GameObject> bosses;
 
     public GameObject currentEnemySlot;
     public GameObject currentEnemy;
@@ -22,7 +23,7 @@ public class EnemyManager : MonoBehaviour
 
         UIHealthDisplay = GameObject.Find("HealthBar");
 
-        CreateEnemy();
+        createEnemy();
     }
 
 
@@ -45,13 +46,24 @@ public class EnemyManager : MonoBehaviour
     {
         if (currentEnemy.GetComponent<Enemy>().CurrentHealthPoints <= 0)
         {
+            gameManager.BossBarPointsUpdate();
+            gameManager.BossBarUIUpdate();
             Destroy(currentEnemy.gameObject);
-            CreateEnemy();
+            createEnemy();
         }
     }
-    private void CreateEnemy()
+    private void createEnemy()
     {
         currentEnemy = Instantiate(enemies[Random.Range(0, enemies.Count)], currentEnemySlot.transform);
         
+    }
+
+    public void CreateBoss()
+    {
+        Destroy(currentEnemy); gameManager.BossBarPointsUpdate();
+        currentEnemy = Instantiate(bosses[Random.Range(0, bosses.Count)], currentEnemySlot.transform);
+
+        gameManager.currentBossBarPoints = 0;
+        gameManager.BossBarUIUpdate();
     }
 }
