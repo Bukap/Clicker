@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainHero : MonoBehaviour
 {
     public float Damage;
+    public GameObject AttackVFX;
 
     void Start()
     {

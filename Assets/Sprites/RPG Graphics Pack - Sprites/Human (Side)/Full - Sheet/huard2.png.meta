@@ -228,7 +228,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      huard2_0: 5076931043799088119
+      huard2_1: 3171418411455123680
+      huard2_2: 2440888624793604740
+      huard2_3: 6911151355703154911
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

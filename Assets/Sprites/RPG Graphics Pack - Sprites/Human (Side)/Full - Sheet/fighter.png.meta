@@ -516,7 +516,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fighter_0: 7359907864729012026
+      fighter_1: -1670394898121757188
+      fighter_10: 341442014613164883
+      fighter_11: 6382666030156825924
+      fighter_12: -6312446374371525512
+      fighter_13: -1026789361233703662
+      fighter_14: 7920258711770954860
+      fighter_15: 4794278762033398285
+      fighter_2: -1658087462363649511
+      fighter_3: 6657580629974750810
+      fighter_4: -7053363531960184077
+      fighter_5: -869706618578871176
+      fighter_6: -6275876392912991235
+      fighter_7: 5948774642621412308
+      fighter_8: 7844055356756266781
+      fighter_9: 246347591603839583
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

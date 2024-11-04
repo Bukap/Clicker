@@ -228,7 +228,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fighter2_0: 6990552073648381213
+      fighter2_1: -2029495252888395364
+      fighter2_2: -6223491231106541884
+      fighter2_3: 325142908869037671
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

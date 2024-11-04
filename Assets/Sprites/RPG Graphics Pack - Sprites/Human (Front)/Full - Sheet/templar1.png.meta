@@ -204,7 +204,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      templar1_0: -3353698123413505517
+      templar1_1: -186485909842704822
+      templar1_2: -4537213282219693575
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

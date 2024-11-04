@@ -7,22 +7,24 @@ public class HeroManager : MonoBehaviour
     [SerializeField] public float TapDamage;
     [SerializeField] public float PerSecondDamage;
 
-    private MainHero mainHero;
+    public MainHero MainHeroGameObject;
     private List<GameObject> additionalHeroList = new List<GameObject>();
 
-    void Start()
+     void Awake()
     {
         #region assigningHeroesVariables
-        mainHero = GameObject.Find("MainHeroSlot").transform.GetChild(0).GetComponent<MainHero>();
 
-        print(GameObject.Find("AdditionalHeroesSlot").transform);
+        MainHeroGameObject = GameObject.Find("MainHeroSlot").transform.GetChild(0).GetComponent<MainHero>();
 
         foreach (Transform child in GameObject.Find("AdditionalHeroesSlot").transform)
         {
             additionalHeroList.Add(child.gameObject);
         }
         #endregion
+    }
 
+    void Start()
+    {
         updateDamage();
     }
 
@@ -34,7 +36,7 @@ public class HeroManager : MonoBehaviour
 
     private void updateDamage()
     {
-        TapDamage = mainHero.Damage;
+        TapDamage = MainHeroGameObject.Damage;
 
         float a = 0;
         foreach(GameObject additionalHero in additionalHeroList)

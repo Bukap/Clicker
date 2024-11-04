@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     private HeroManager heroManager; 
 
+    private VFXManager vFXManager;
+
     [HideInInspector]
     public float UIHealthBarMaxWidth;
 
@@ -23,23 +25,31 @@ public class GameManager : MonoBehaviour
     private float oneSecond = 1;
     private float timer;
 
+    [SerializeField] GameObject heroVFX;
+
     private void Awake()
     {
+        enemyManager = GetComponent<EnemyManager>();
+        heroManager = GetComponent<HeroManager>();
+        vFXManager = GetComponent<VFXManager>();
+
         UIHealthBarMaxWidth = GameObject.Find("HealthBar").GetComponent<RectTransform>().sizeDelta.x;
         bossBar = GameObject.Find("BossBar");
 
         startBossButton = GameObject.Find("StartBoss");
+        
+        maxBossBarWidthUI = bossBar.GetComponent<RectTransform>().sizeDelta.x;
+
     }
 
     void Start()
     {
-        enemyManager = GetComponent<EnemyManager>();
-        heroManager = GetComponent<HeroManager>();
-
-        maxBossBarWidthUI = bossBar.GetComponent<RectTransform>().sizeDelta.x;
+        
         bossBarPointsToWidthUI = maxBossBarWidthUI / maxBossBarPoints;
 
         BossBarUIUpdate();
+        heroVFX = heroManager.MainHeroGameObject.AttackVFX;
+
     }
 
 
@@ -52,9 +62,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         #region tapDamageCall
-        if (Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.TapDamage);
+            vFXManager.OnScreenEffect(heroVFX);
         }
         #endregion
 

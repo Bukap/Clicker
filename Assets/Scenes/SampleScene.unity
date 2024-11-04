@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 519420034}
   - component: {fileID: 519420033}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -354,6 +355,7 @@ MonoBehaviour:
   currentBossBarPoints: 0
   bossBarPointPerKill: 50
   bossBarPointsToWidthUI: 0
+  heroVFX: {fileID: 0}
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,6 +370,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TapDamage: 0
   PerSecondDamage: 0
+  MainHeroGameObject: {fileID: 0}
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12e04aa29a3002a45973fb8e7e9eea3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &641409404
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +915,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856457635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -100}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1468,6 +1483,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainHeroPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 7536917282422128205, guid: cb360c0a8d8168943a14fcb3408fc28b, type: 3}
+      propertyPath: AttackVFX
+      value: 
+      objectReference: {fileID: 8525990746615576120, guid: b85d21f3b8fed714bacf0c4fd50fa512, type: 3}
     - target: {fileID: 8870306724723031124, guid: cb360c0a8d8168943a14fcb3408fc28b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

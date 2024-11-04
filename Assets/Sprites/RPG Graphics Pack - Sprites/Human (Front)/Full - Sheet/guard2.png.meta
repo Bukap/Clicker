@@ -204,7 +204,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      guard2_0: 4234399794683613960
+      guard2_1: 8909437542978402492
+      guard2_2: 2486959166787566626
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

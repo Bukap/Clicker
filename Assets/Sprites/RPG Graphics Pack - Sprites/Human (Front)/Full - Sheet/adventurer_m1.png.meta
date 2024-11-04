@@ -204,7 +204,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      adventurer_m1_0: -6481973552835944621
+      adventurer_m1_1: -8153930476686098900
+      adventurer_m1_2: -324539479457096327
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

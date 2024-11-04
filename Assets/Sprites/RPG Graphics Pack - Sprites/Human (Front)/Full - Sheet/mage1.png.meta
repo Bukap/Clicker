@@ -204,7 +204,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mage1_0: 7475961083183233961
+      mage1_1: 1603341064947792584
+      mage1_2: -4789209231733722760
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

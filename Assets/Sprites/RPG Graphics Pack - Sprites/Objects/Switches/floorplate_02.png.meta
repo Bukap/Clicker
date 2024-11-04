@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      floorplate_02_0: 68247472057240664
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
