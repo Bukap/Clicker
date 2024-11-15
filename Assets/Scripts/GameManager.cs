@@ -6,26 +6,35 @@ public class GameManager : MonoBehaviour
 {
     private EnemyManager enemyManager;
 
-    private HeroManager heroManager; 
+    private HeroManager heroManager;
 
-    private VFXManager vFXManager;
+    [SerializeField] private VFXManager vFXManager;
 
     [HideInInspector]
     public float UIHealthBarMaxWidth;
 
+    [HideInInspector]
     [SerializeField] private GameObject bossBar;
+    [HideInInspector]
     [SerializeField] private float maxBossBarWidthUI;
+    [HideInInspector]
     [SerializeField] private float currentBossBarWidthUI;
+
+    [HideInInspector]
     [SerializeField] private float maxBossBarPoints;
+    [HideInInspector]
     [SerializeField] public float currentBossBarPoints;
+
+    [Tooltip ("Ilosc punktow do boss bara co zabojstwo")] 
     [SerializeField] private float bossBarPointPerKill;
+
+    [HideInInspector]
     [SerializeField] private float bossBarPointsToWidthUI;
+
     private GameObject startBossButton;
 
-    private float oneSecond = 1;
     private float timer;
-
-    [SerializeField] GameObject heroVFX;
+    private float oneSecond = 1;
 
     private void Awake()
     {
@@ -48,7 +57,6 @@ public class GameManager : MonoBehaviour
         bossBarPointsToWidthUI = maxBossBarWidthUI / maxBossBarPoints;
 
         BossBarUIUpdate();
-        heroVFX = heroManager.MainHeroGameObject.AttackVFX;
 
     }
 
@@ -59,23 +67,25 @@ public class GameManager : MonoBehaviour
         
     }
 
-    private void Update()
+     void Update()
     {
         #region tapDamageCall
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.TapDamage);
-            vFXManager.OnScreenEffect(heroVFX);
+            vFXManager.OnScreenMainHeroAttackEffect();
         }
         #endregion
 
-        #region damagePerSecondCall
+        #region perSecondDamageCall
         timer += Time.deltaTime;
-        if (timer > oneSecond)
+        if (timer > oneSecond && !vFXManager.isCorutineRunning)
         {
+            vFXManager.OnScreenAdditionalHeroAttackEffect(); 
             enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.PerSecondDamage);
             timer = 0;
         }
+
         #endregion
     }
 

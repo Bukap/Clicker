@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class AdditionalHero : MonoBehaviour
 {
+    [Tooltip("Obrazenia na sekudne od tego konkretnego bohatera")]
     public float Damage;
-
+    [Tooltip("Efekt wizualny wyswietlany co sekunde")]
+    public GameObject AttackVFX;
 
     void Start()
     {

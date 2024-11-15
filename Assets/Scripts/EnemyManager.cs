@@ -6,23 +6,30 @@ public class EnemyManager : MonoBehaviour
 {
     private GameManager gameManager;
 
+    [Tooltip ("Lista przeciwnikow do wylowowanie dla graczy")]
     [SerializeField] public List<GameObject> enemies;
+    [Tooltip("Lista bossow do wylowowanie dla graczy")]
     [SerializeField] public List<GameObject> bosses;
 
+    [HideInInspector]
     public GameObject currentEnemySlot;
+    [HideInInspector]
     public GameObject currentEnemy;
 
-    [SerializeField] private GameObject UIHealthDisplay;
+    private GameObject UIHealthDisplay;
 
 
-    void Start()
+     void Awake()
     {
         gameManager = GameObject.Find("MainCamera").GetComponent<GameManager>();
 
         currentEnemySlot = GameObject.Find("CurrentEnemySlot");
 
         UIHealthDisplay = GameObject.Find("HealthBar");
+    }
 
+    void Start()
+    {
         createEnemy();
     }
 

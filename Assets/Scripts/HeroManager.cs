@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class HeroManager : MonoBehaviour
 {
-    [SerializeField] public float TapDamage;
-    [SerializeField] public float PerSecondDamage;
+    [Tooltip("Sumaryczne obrazenia co tapniecie (poki co to sa tylko obrazenia od bohatera, ale kiedys bedziemy tu obliczac tez dodatkowe perki z broni itp.)")]
+     public float TapDamage;
+    [Tooltip("Sumaryczne obrazenia co sekunde (poki co to sa tylko obrazenia od bohaterów, ale kiedys bedziemy tu obliczac tez dodatkowe perki z broni itp.)")]
+     public float PerSecondDamage;
 
+    [HideInInspector]
     public MainHero MainHeroGameObject;
-    private List<GameObject> additionalHeroList = new List<GameObject>();
+    public GameObject AdditionalHeroSlot;
+    public List<GameObject> AdditionalHeroList = new List<GameObject>();
+
 
      void Awake()
     {
+        AdditionalHeroSlot = GameObject.Find("AdditionalHeroesSlot");
+
         #region assigningHeroesVariables
 
         MainHeroGameObject = GameObject.Find("MainHeroSlot").transform.GetChild(0).GetComponent<MainHero>();
 
-        foreach (Transform child in GameObject.Find("AdditionalHeroesSlot").transform)
+        foreach (Transform additionalHero in AdditionalHeroSlot.transform)
         {
-            additionalHeroList.Add(child.gameObject);
+            AdditionalHeroList.Add(additionalHero.gameObject);
         }
         #endregion
     }
@@ -39,7 +46,7 @@ public class HeroManager : MonoBehaviour
         TapDamage = MainHeroGameObject.Damage;
 
         float a = 0;
-        foreach(GameObject additionalHero in additionalHeroList)
+        foreach(GameObject additionalHero in AdditionalHeroList)
         {
             a += additionalHero.GetComponent<AdditionalHero>().Damage;
         }

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MainHero : MonoBehaviour
 {
+    [Tooltip("Obrazenia od tego konkretnego bohatera. Dodawane do tapowania")]
     public float Damage;
+    [Tooltip("Efekt wizualny tapowania")]
     public GameObject AttackVFX;
 
     void Start()

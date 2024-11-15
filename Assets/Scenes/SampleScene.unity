@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1591200188}
     m_Modifications:
+    - target: {fileID: 1318649370010904560, guid: e616cdb2c2d8dcc4db6f429a30b1a50c, type: 3}
+      propertyPath: AttackVFX
+      value: 
+      objectReference: {fileID: 6263782476919498309, guid: 1fd2749f2a4056446881dce86ed70c39, type: 3}
     - target: {fileID: 2187442939018236687, guid: e616cdb2c2d8dcc4db6f429a30b1a50c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -277,7 +281,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.02
+  near clip plane: -1
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -334,7 +338,6 @@ MonoBehaviour:
   - {fileID: 7987007869417590946, guid: 51c76a1b0b4655f40b48d7cbadf729b6, type: 3}
   currentEnemySlot: {fileID: 0}
   currentEnemy: {fileID: 0}
-  UIHealthDisplay: {fileID: 0}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453d599da251e244db8fdb7962f1052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vFXManager: {fileID: 0}
   UIHealthBarMaxWidth: 0
   bossBar: {fileID: 0}
   maxBossBarWidthUI: 0
@@ -355,7 +359,6 @@ MonoBehaviour:
   currentBossBarPoints: 0
   bossBarPointPerKill: 50
   bossBarPointsToWidthUI: 0
-  heroVFX: {fileID: 0}
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,6 +374,8 @@ MonoBehaviour:
   TapDamage: 0
   PerSecondDamage: 0
   MainHeroGameObject: {fileID: 0}
+  AdditionalHeroSlot: {fileID: 0}
+  AdditionalHeroList: []
 --- !u!114 &519420036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,6 +388,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e04aa29a3002a45973fb8e7e9eea3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vfxObjextsCount: 5
+  additionalHeroVFXList: []
+  vfxPositionMaxNoise: {x: 1, y: 2}
+  vfxSpawnTimeMaxNoise: 0.1
+  vfxDPSpawnList: []
+  isCorutineRunning: 0
 --- !u!1 &641409404
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +535,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1591200188}
     m_Modifications:
+    - target: {fileID: 1318649370010904560, guid: e616cdb2c2d8dcc4db6f429a30b1a50c, type: 3}
+      propertyPath: AttackVFX
+      value: 
+      objectReference: {fileID: 6263782476919498309, guid: 1fd2749f2a4056446881dce86ed70c39, type: 3}
     - target: {fileID: 2187442939018236687, guid: e616cdb2c2d8dcc4db6f429a30b1a50c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -671,6 +686,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1591200188}
     m_Modifications:
+    - target: {fileID: 1318649370010904560, guid: e616cdb2c2d8dcc4db6f429a30b1a50c, type: 3}
+      propertyPath: AttackVFX
+      value: 
+      objectReference: {fileID: 6263782476919498309, guid: 1fd2749f2a4056446881dce86ed70c39, type: 3}
     - target: {fileID: 2187442939018236687, guid: e616cdb2c2d8dcc4db6f429a30b1a50c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -952,6 +971,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1591200188}
     m_Modifications:
+    - target: {fileID: 1318649370010904560, guid: e616cdb2c2d8dcc4db6f429a30b1a50c, type: 3}
+      propertyPath: AttackVFX
+      value: 
+      objectReference: {fileID: 6263782476919498309, guid: 1fd2749f2a4056446881dce86ed70c39, type: 3}
     - target: {fileID: 2187442939018236687, guid: e616cdb2c2d8dcc4db6f429a30b1a50c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1580,6 +1603,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1591200188}
     m_Modifications:
+    - target: {fileID: 1318649370010904560, guid: e616cdb2c2d8dcc4db6f429a30b1a50c, type: 3}
+      propertyPath: AttackVFX
+      value: 
+      objectReference: {fileID: 6263782476919498309, guid: 1fd2749f2a4056446881dce86ed70c39, type: 3}
     - target: {fileID: 2187442939018236687, guid: e616cdb2c2d8dcc4db6f429a30b1a50c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
