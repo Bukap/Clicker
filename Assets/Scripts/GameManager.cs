@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
 
     private HeroManager heroManager;
 
-    [SerializeField] private VFXManager vFXManager;
+    private VFXManager vFXManager;
+
+    private AudioManager audioManager;
 
     [HideInInspector]
     public float UIHealthBarMaxWidth;
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
         enemyManager = GetComponent<EnemyManager>();
         heroManager = GetComponent<HeroManager>();
         vFXManager = GetComponent<VFXManager>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
         UIHealthBarMaxWidth = GameObject.Find("HealthBar").GetComponent<RectTransform>().sizeDelta.x;
         bossBar = GameObject.Find("BossBar");
@@ -74,6 +77,7 @@ public class GameManager : MonoBehaviour
         {
             enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.TapDamage);
             vFXManager.OnScreenMainHeroAttackEffect();
+            audioManager.PlaySFX("Wind");
         }
         #endregion
 

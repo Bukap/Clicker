@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class AudioManager : MonoBehaviour
     public List<AudioClip> musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
-
+    [SerializeField] private float pitchMin;
+    [SerializeField] private float pitchMax;
     void Awake()
     {
         if (Instance == null)
@@ -64,7 +66,7 @@ public class AudioManager : MonoBehaviour
     
     public void PlaySFX(string name)
     {
-
+        sfxSource.pitch = Random.Range(pitchMin,pitchMax);
         sfxSource.PlayOneShot(findSFXClipByName(name));
         
     }

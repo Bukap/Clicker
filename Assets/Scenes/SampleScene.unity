@@ -350,7 +350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453d599da251e244db8fdb7962f1052b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vFXManager: {fileID: 0}
   UIHealthBarMaxWidth: 0
   bossBar: {fileID: 0}
   maxBossBarWidthUI: 0
@@ -818,6 +817,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4a8af7fcd7a45d0438a6f589fc37589f, type: 3}
   musicSource: {fileID: 1649696737}
   sfxSource: {fileID: 2039581937}
+  pitchMin: 0.8
+  pitchMax: 1.2
 --- !u!4 &1293372351
 Transform:
   m_ObjectHideFlags: 0
