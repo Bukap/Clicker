@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      monster_87_0: -4078592871821857847
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

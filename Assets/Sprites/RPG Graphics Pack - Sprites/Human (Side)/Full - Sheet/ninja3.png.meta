@@ -228,7 +228,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ninja3_0: 1399429077627460737
+      ninja3_1: -7658259906527884799
+      ninja3_2: -7112346662209469824
+      ninja3_3: -8218347884294632095
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

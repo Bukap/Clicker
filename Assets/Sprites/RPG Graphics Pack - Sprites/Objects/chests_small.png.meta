@@ -516,7 +516,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      chests_small_0: -8054964686192327519
+      chests_small_1: -6540709697686049319
+      chests_small_10: -5965583309502639110
+      chests_small_11: -2096408566579809265
+      chests_small_12: -6749724353278886652
+      chests_small_13: 5055240524187627954
+      chests_small_14: 7955221348978096227
+      chests_small_15: -8874100395235954228
+      chests_small_2: -8789772063131084844
+      chests_small_3: -5253596543253644601
+      chests_small_4: -8134254086754213002
+      chests_small_5: -7175053102038243557
+      chests_small_6: 13114350889028591
+      chests_small_7: 445058916848368860
+      chests_small_8: 8377386133689071925
+      chests_small_9: -8356932494821851015
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

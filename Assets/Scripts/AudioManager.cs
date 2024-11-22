@@ -7,11 +7,11 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    public Sound[] musicSounds, sfxSounds;
+    public List<AudioClip> musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
 
-    private void Awake()
+    void Awake()
     {
         if (Instance == null)
         {
@@ -25,41 +25,47 @@ public class AudioManager : MonoBehaviour
     }
 
     
-    private void Start()
+    void Start()
     {
-        PlayMusic("Main Theme");
+        PlayMusic("MainTheme");
     }
 
+    // Finds AudioClip from musicSounds by name
+    private AudioClip findMusicClipByName(string clipName)
+    {
+        foreach (AudioClip clip in musicSounds)
+        {
+            if (clip.name == clipName)
+            {
+                return clip; 
+            }
+        }
+        return null; 
+    }
 
+    // Finds AudioClip from sfxSounds by name
+    private AudioClip findSFXClipByName(string clipName)
+    {
+        foreach (AudioClip clip in sfxSounds)
+        {
+            if (clip.name == clipName)
+            {
+                return clip; 
+            }
+        }
+        return null; 
+    }
 
     public void PlayMusic(string name)
     {
-        Sound s = Array.Find(musicSounds, x => x.name == name);
-
-        if (s == null)
-        {
-            Debug.Log("Sound Not Found");
-        }
-
-        else
-        {
-            musicSource.clip = s.clip;
-            musicSource.Play();
-        }   
+         musicSource.clip = findMusicClipByName(name);
+         musicSource.Play();   
     }
     
     public void PlaySFX(string name)
     {
-        Sound s = Array.Find(sfxSounds, x => x.name == name);
 
-        if (s == null)
-        {
-            Debug.Log("Sound Not Found");
-        }
-
-        else
-        {
-            sfxSource.PlayOneShot(s.clip);
-        }
+        sfxSource.PlayOneShot(findSFXClipByName(name));
+        
     }
 }

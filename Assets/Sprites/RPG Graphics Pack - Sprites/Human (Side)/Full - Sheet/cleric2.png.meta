@@ -228,7 +228,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cleric2_0: 10638857132018736
+      cleric2_1: 6612730525425502318
+      cleric2_2: 8086537967087766633
+      cleric2_3: -7262092314000981401
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

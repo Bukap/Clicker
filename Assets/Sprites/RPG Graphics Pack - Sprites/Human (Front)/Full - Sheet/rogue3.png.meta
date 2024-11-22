@@ -204,7 +204,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      rogue3_0: 5208657834576258649
+      rogue3_1: -993793262986580398
+      rogue3_2: -2780179614222652797
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

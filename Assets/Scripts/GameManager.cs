@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     private HeroManager heroManager; 
 
+    private AudioManager audioManager;
+
     [HideInInspector]
     public float UIHealthBarMaxWidth;
 
@@ -25,6 +27,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        enemyManager = GetComponent<EnemyManager>();
+        heroManager = GetComponent<HeroManager>();
+
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         UIHealthBarMaxWidth = GameObject.Find("HealthBar").GetComponent<RectTransform>().sizeDelta.x;
         bossBar = GameObject.Find("BossBar");
 
@@ -33,9 +39,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        enemyManager = GetComponent<EnemyManager>();
-        heroManager = GetComponent<HeroManager>();
-
         maxBossBarWidthUI = bossBar.GetComponent<RectTransform>().sizeDelta.x;
         bossBarPointsToWidthUI = maxBossBarWidthUI / maxBossBarPoints;
 
@@ -46,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+
     }
 
     private void Update()
@@ -55,6 +58,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.TapDamage);
+            audioManager.PlaySFX("Wind");
         }
         #endregion
 

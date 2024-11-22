@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      chest2_0: 9116851946686450653
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

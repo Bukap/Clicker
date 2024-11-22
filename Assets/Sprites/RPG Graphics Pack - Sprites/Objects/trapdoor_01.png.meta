@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      trapdoor_01_0: 5769315599261711969
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
