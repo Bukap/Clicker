@@ -37,17 +37,14 @@ public class VFXManager : MonoBehaviour
         heroManager = GetComponent<HeroManager>();
         enemyManager = GetComponent<EnemyManager>();  
         safeArea = GameObject.Find("SafeArea").GetComponent<RectTransform>();
-        tapVFX = heroManager.MainHeroGameObject.AttackVFX;
+        tapVFX = heroManager.MainHero.AttackVFX;
         
     }
 
     void Start()
     {
         #region VFX List Instantiation
-        foreach (GameObject additioanlHero in heroManager.AdditionalHeroList)
-        {
-            additionalHeroVFXList.Add(additioanlHero.GetComponent<AdditionalHero>().AttackVFX);
-        }
+        
         #endregion
     }
 
