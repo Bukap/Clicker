@@ -35,8 +35,9 @@ public class GameManager : MonoBehaviour
 
     private GameObject startBossButton;
 
-    private float timer;
-    private float oneSecond = 1;
+    private float timerFighter;
+    private float timerRanger;
+    private int rangerHitCounter;
 
     private void Awake()
     {
@@ -72,26 +73,60 @@ public class GameManager : MonoBehaviour
 
      void Update()
     {
-        #region tapDamageCall
+        tapDamageCall();
+
+        perTimeDamageCallFighter();
+
+        perTimeDamageCallRanger();
+
+    }
+
+    private void perTimeDamageCallFighter()
+    {
+        timerFighter += Time.deltaTime;
+        if (timerFighter > heroManager.TimeFighter && !vFXManager.isCorutineRunning)
+        {
+            vFXManager.OnScreenAdditionalHeroAttackEffect();
+            enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.DamagePerTimeFighter);
+            timerFighter = 0;
+        }
+    }
+
+    private void perTimeDamageCallRanger()
+    {
+
+        timerRanger += Time.deltaTime;
+        if (timerRanger > heroManager.TimeRanger && !vFXManager.isCorutineRunning)
+        {
+            vFXManager.OnScreenAdditionalHeroAttackEffect();            
+            
+            if (rangerHitCounter > heroManager.Xattacks) 
+            {
+                enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.DamagePerTimeRanger + heroManager.ExtraDamagePerXattacks);
+                rangerHitCounter = 0;
+            }
+            else
+            {
+                enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.DamagePerTimeRanger);
+            }
+
+            rangerHitCounter++;
+            timerRanger = 0;
+        }
+    }
+
+    private void tapDamageCall()
+    {
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.TapDamage);
             vFXManager.OnScreenMainHeroAttackEffect();
             audioManager.PlaySFX("Wind");
         }
-        #endregion
-
-        #region perSecondDamageCall
-        timer += Time.deltaTime;
-        if (timer > oneSecond && !vFXManager.isCorutineRunning)
-        {
-            vFXManager.OnScreenAdditionalHeroAttackEffect(); 
-            enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.PerSecondDamage);
-            timer = 0;
-        }
-
-        #endregion
     }
+
+
+
 
     public void BossBarPointsUpdate()
     {
