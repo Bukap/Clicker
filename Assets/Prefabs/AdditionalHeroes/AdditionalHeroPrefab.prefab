@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: -6389853063848088838, guid: 65683c27a8fd5a8458b8a9b03d157322, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -103,4 +103,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fee597196f86d6419d3f5e78d403640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
+  DamagePerTimeFighter: 0
+  TimeFighter: 0
+  DamagePerTimeRanger: 0
+  ExtraDamagePerXattacks: 0
+  Xattacks: 0
+  TimeRanger: 0
+  MainHeroFlatDamageBoost: 
+  SideHeroFlatDamageBoost: 
+  LootA: 
+  LootB: 
+  LootC: 
+  LootD: 
+  AttackVFX: {fileID: 0}
