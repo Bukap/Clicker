@@ -17,8 +17,10 @@ public class UIManager : MonoBehaviour
     void Awake()
     {
         mainCamera = GameObject.Find("MainCamera");
-        shopPanel = GameObject.Find("BackgroundShop");
-        combatPanel = GameObject.Find("BackgroundCombat");
+        shopPanel = GameObject.Find("ShopPanel");
+        combatPanel = GameObject.Find("CombatPanel");
+
+        print("combat panel "+ combatPanel.transform.position);
     }
 
     void Start()
@@ -26,7 +28,7 @@ public class UIManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         switch (currentPanel)
@@ -54,11 +56,11 @@ public class UIManager : MonoBehaviour
 
     private void goToShop()
     {
-        mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, shopPanel.transform.position, transitionSpeed);
+        mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, new Vector3(shopPanel.transform.position.x, 0, mainCamera.transform.position.z), transitionSpeed);
     }
 
     private void goToCombat()
     {
-        mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, combatPanel.transform.position, transitionSpeed);
+        mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, new Vector3(combatPanel.transform.position.x, 0, mainCamera.transform.position.z), transitionSpeed);
     }
 }

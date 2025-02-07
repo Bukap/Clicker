@@ -46,8 +46,8 @@ public class GameManager : MonoBehaviour
         vFXManager = GetComponent<VFXManager>();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
-        UIHealthBarMaxWidth = GameObject.Find("HealthBar").GetComponent<RectTransform>().sizeDelta.x;
-        bossBar = GameObject.Find("BossBar");
+        UIHealthBarMaxWidth = GameObject.Find("HealthDisplay").GetComponent<RectTransform>().sizeDelta.x;
+        bossBar = GameObject.Find("BossBarDisplay");
 
         startBossButton = GameObject.Find("StartBoss");
         
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
 
     private void perTimeDamageCallRanger()
     {
-
+        
         timerRanger += Time.deltaTime;
         if (timerRanger > heroManager.TimeRanger && !vFXManager.isCorutineRunning)
         {

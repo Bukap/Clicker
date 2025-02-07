@@ -25,7 +25,7 @@ public class EnemyManager : MonoBehaviour
 
         currentEnemySlot = GameObject.Find("CurrentEnemySlot");
 
-        UIHealthDisplay = GameObject.Find("HealthBar");
+        UIHealthDisplay = GameObject.Find("HealthDisplay");
     }
 
     void Start()
