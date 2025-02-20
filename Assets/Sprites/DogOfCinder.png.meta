@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DogOfCinder_0: -7523775774913632452
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
