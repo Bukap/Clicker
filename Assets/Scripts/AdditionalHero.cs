@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.PackageManager;
@@ -9,6 +10,10 @@ using static UnityEngine.GraphicsBuffer;
 
 public class AdditionalHero : MonoBehaviour
 {
+
+    public string Name;
+    public Sprite UIimage; 
+    public string Description;
 
     [Header("Fighter")]
     [Tooltip("Obrazenia co czas od tego konkretnego bohatera")]
@@ -45,7 +50,8 @@ public class AdditionalHero : MonoBehaviour
 
     void Start()
     {
-        
+        Name = gameObject.name;
+
     }
 
     // Update is called once per frame
@@ -54,9 +60,37 @@ public class AdditionalHero : MonoBehaviour
         
     }
 
-    
+    private void initializeName()
+    {
+        name = this.gameObject.name;
+    }
 
+    public string AddDescription()
+    {
+        switch (gameObject.tag)
+        {
+            case "Fighter":
+                Description = Name + "\n" + "Damage: " + DamagePerTimeFighter + "\n" + "AttackSpeed:" + TimeFighter;
+
+                break;
+            case "Ranger":
+                Description = Name + "\n" + "Damage: " + DamagePerTimeRanger + "\n" + "ExtraDamagePer" + Xattacks + "\n" + "AttackSpeed:" + TimeRanger;
+
+                break;
+            case "Support":
+                Description = Name + "\n" + "MainHeroFlatDamageBoost: " + MainHeroFlatDamageBoost + "\n" + "SideHeroFlatDamageBoost: " + SideHeroFlatDamageBoost;
+
+                break;
+            case "Shaman":
+                Description = Name + "\n" + "LootABoost: " + LootA + "\n" + "LootBBoost: " + LootB + "\n" + "LootCBoost: " + LootC + "\n" + "LootDBoost: " + LootD + "\n";
+
+                break;
+        }
+
+        return Description;
+    }
 }
+
 
 
 [CustomEditor(typeof(AdditionalHero))]
@@ -69,6 +103,10 @@ public class AdditionalHeroEditor : Editor
 
         EditorGUILayout.LabelField("Tag:", gameObject.tag);
 
+        SerializedProperty Name = serializedObject.FindProperty("Name");
+        EditorGUILayout.PropertyField(Name);
+        SerializedProperty UIimage = serializedObject.FindProperty("UIimage");
+        EditorGUILayout.PropertyField(UIimage);
 
         switch (gameObject.tag)
         {

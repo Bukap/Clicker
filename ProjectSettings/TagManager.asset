@@ -8,6 +8,8 @@ TagManager:
   - Ranger
   - Shaman
   - Support
+  - MainHero
+  - Weapon
   layers:
   - Default
   - TransparentFX

@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
 public class HeroManager : MonoBehaviour
 {
+
+    private EconomyManager economyManager;
 
     [Tooltip("Sumaryczne obrazenia co tapniecie (poki co to sa tylko obrazenia od bohatera, ale kiedys bedziemy tu obliczac tez dodatkowe perki z broni itp.)")]
      public float TapDamage;
@@ -36,36 +39,31 @@ public class HeroManager : MonoBehaviour
     private GameObject shamanSlot;
 
     [HideInInspector] public MainHero MainHero;
+    [HideInInspector] public Weapon MainHeroWeapon;
     [HideInInspector] public AdditionalHero FighterAdditionalHero;
     [HideInInspector] public AdditionalHero RangerAdditionalHero;
     [HideInInspector] public AdditionalHero SupportAdditionalHero;
     [HideInInspector] public AdditionalHero ShamanAdditionalHero;
 
-
+    [SerializeField] private GameObject weaponSocket;
 
      void Awake()
-    {
+     {
+        economyManager = GetComponent<EconomyManager>();
+
         #region assigningHeroesSlots
-         mainHeroSlot = GameObject.Find("MainHeroSlot");
-         fighterSlot = GameObject.Find("Fighter");
-         rangerSlot = GameObject.Find("Ranger");
-         supportSlot = GameObject.Find("Support");
-         shamanSlot = GameObject.Find("Shaman");
+        mainHeroSlot = GameObject.Find("MainHeroSlot");
+        fighterSlot = GameObject.Find("Fighter");
+        rangerSlot = GameObject.Find("Ranger");
+        supportSlot = GameObject.Find("Support");
+        shamanSlot = GameObject.Find("Shaman");     
         #endregion
-
-        #region assigningHeroesVariables
-        MainHero = mainHeroSlot.transform.GetChild(0).GetComponent<MainHero>();
-        FighterAdditionalHero = fighterSlot.transform.GetChild(0).GetComponent<AdditionalHero>();
-        RangerAdditionalHero = rangerSlot.transform.GetChild(0).GetComponent<AdditionalHero>();
-        SupportAdditionalHero = supportSlot.transform.GetChild(0).GetComponent<AdditionalHero>();
-        ShamanAdditionalHero = shamanSlot.transform.GetChild(0).GetComponent<AdditionalHero>();
-
-        #endregion
-    }
+        UpdateStats();
+     }
 
     void Start()
     {
-        updateStats();
+        
     }
 
     // Update is called once per frame
@@ -74,14 +72,92 @@ public class HeroManager : MonoBehaviour
         
     }
 
-    private void updateStats()
+    private void assignHeroesVariables()
     {
+        MainHero = economyManager.EquipedMainHero.GetComponent<MainHero>();
+        MainHeroWeapon = economyManager.EquipedWeapon.GetComponent<Weapon>();
+        FighterAdditionalHero = economyManager.EquipedAdditionalHeroesFighter.GetComponent<AdditionalHero>();
+        RangerAdditionalHero = economyManager.EquipedAdditionalHeroesRanger.GetComponent<AdditionalHero>();
+        SupportAdditionalHero = economyManager.EquipedAdditionalHeroesSupport.GetComponent<AdditionalHero>();
+        ShamanAdditionalHero = economyManager.EquipedAdditionalHeroesShaman.GetComponent<AdditionalHero>();
+    }
+
+    private void spawnHeroes()
+    {
+        if (mainHeroSlot.transform.childCount>0)
+        {
+            foreach (Transform child in mainHeroSlot.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        GameObject a = Instantiate(economyManager.EquipedMainHero);
+        a.transform.SetParent(mainHeroSlot.transform,false);
+        weaponSocket = a.GetComponentsInChildren<Transform>(true).FirstOrDefault(t => t.name == "WeaponSocket")?.gameObject;
+
+        if (weaponSocket.transform.childCount > 0)
+        {
+            foreach (Transform child in GameObject.Find("WeaponSocket").transform.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        GameObject b = Instantiate(economyManager.EquipedWeapon);
+        b.transform.SetParent(weaponSocket.transform, false);
+        print(b.transform.position + b.name);
+
+        if (fighterSlot.transform.childCount > 0)
+        {
+            foreach (Transform child in fighterSlot.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        GameObject c = Instantiate(economyManager.EquipedAdditionalHeroesFighter);
+        c.transform.SetParent(fighterSlot.transform, false);
+
+        if (rangerSlot.transform.childCount > 0)
+        {
+            foreach (Transform child in rangerSlot.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        GameObject d = Instantiate(economyManager.EquipedAdditionalHeroesRanger);
+        d.transform.SetParent(rangerSlot.transform, false);
+
+        if (shamanSlot.transform.childCount > 0)
+        {
+            foreach (Transform child in shamanSlot.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        GameObject e = Instantiate(economyManager.EquipedAdditionalHeroesShaman);
+        e.transform.SetParent(shamanSlot.transform, false);
+
+        if (supportSlot.transform.childCount > 0)
+        {
+            foreach (Transform child in supportSlot.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        GameObject f = Instantiate(economyManager.EquipedAdditionalHeroesSupport);
+        f.transform.SetParent(supportSlot.transform, false);
+    }
+
+    public void UpdateStats()
+    {
+        assignHeroesVariables();
+        spawnHeroes();
+
         #region Support
         MainHeroFlatDamageBoost = SupportAdditionalHero.MainHeroFlatDamageBoost;
         SideHeroFlatDamageBoost = SupportAdditionalHero.SideHeroFlatDamageBoost;
         #endregion
         #region Hero
-        TapDamage = MainHero.Damage;
+        TapDamage = MainHero.Damage + MainHeroWeapon.Damage;
         BoostHandler(MainHeroFlatDamageBoost, TapDamage);
         #endregion
         #region Fighter

@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
         
         maxBossBarWidthUI = bossBar.GetComponent<RectTransform>().sizeDelta.x;
 
+
+
     }
 
     void Start()
