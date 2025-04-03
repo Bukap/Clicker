@@ -5,8 +5,9 @@ public class ScrollBarController : MonoBehaviour
 {
     [SerializeField] private Scrollbar scrollbar; // Reference to the scrollbar
     [SerializeField] private RectTransform targetRect; // The RectTransform to move
-    [SerializeField] private float minY; // Minimum Y position
-    [SerializeField] private float maxY; // Maximum Y position
+    [SerializeField] private float min; // Minimum Y position
+    [SerializeField] private float max; // Maximum Y position
+    [SerializeField] private bool  horizontal; // Maximum Y position
 
     void Start()
     {
@@ -21,9 +22,17 @@ public class ScrollBarController : MonoBehaviour
     {
         if (targetRect != null)
         {
-            // Interpolate between minY and maxY based on the scrollbar value
-            float newY = Mathf.Lerp(minY, maxY, value);
-            targetRect.anchoredPosition = new Vector2(targetRect.anchoredPosition.x, newY);
+            if (!horizontal)
+            {
+                // Interpolate between minY and maxY based on the scrollbar value
+                float newY = Mathf.Lerp(min, max, value);
+                targetRect.anchoredPosition = new Vector2(targetRect.anchoredPosition.x, newY);
+            }
+            else 
+            {
+                float newX = Mathf.Lerp(min, max, value);
+                targetRect.anchoredPosition = new Vector2(-newX, targetRect.anchoredPosition.y );
+            }
         }
     }
 

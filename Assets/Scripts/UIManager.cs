@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
+    #region ScreenSwitch
     public void switchToShop()
     {
         currentPanel = panels.shop;
@@ -63,4 +63,27 @@ public class UIManager : MonoBehaviour
     {
         mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, new Vector3(combatPanel.transform.position.x, 0, mainCamera.transform.position.z), transitionSpeed);
     }
+
+    #endregion
+
+    #region ItemSmelt
+    public void markItemVisual_ItemSmelter(GameObject itemSmelterButton)
+    {
+        swithStatus(itemSmelterButton.transform.GetChild(0).gameObject);
+        swithStatus(itemSmelterButton.transform.GetChild(1).gameObject);
+    }
+    private void swithStatus(GameObject checkmark)
+    {
+        switch (checkmark.activeInHierarchy) 
+        {
+            case true:
+                checkmark.SetActive(false); 
+                break;
+
+            case false:
+                checkmark.SetActive(true); 
+                break;
+        }
+    }
+    #endregion
 }
