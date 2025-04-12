@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     private GameManager gameManager;
+    private EconomyManager economyManager;
+    private SaveManager saveManager;
 
     [Tooltip ("Lista przeciwnikow do wylowowanie dla graczy")]
     [SerializeField] public List<GameObject> enemies;
@@ -21,7 +23,9 @@ public class EnemyManager : MonoBehaviour
 
      void Awake()
     {
-        gameManager = GameObject.Find("MainCamera").GetComponent<GameManager>();
+        gameManager = GetComponent<GameManager>();
+        economyManager = GetComponent<EconomyManager>();
+        saveManager = GetComponent<SaveManager>();
 
         currentEnemySlot = GameObject.Find("CurrentEnemySlot");
 
@@ -57,6 +61,8 @@ public class EnemyManager : MonoBehaviour
             gameManager.BossBarUIUpdate();
             Destroy(currentEnemy.gameObject);
             createEnemy();
+            economyManager.AddCurrency();
+            saveManager.SaveGame();
         }
     }
     private void createEnemy()

@@ -8,6 +8,7 @@ public class HeroManager : MonoBehaviour
 {
 
     private EconomyManager economyManager;
+    private SaveManager saveManager;
 
     [Tooltip("Sumaryczne obrazenia co tapniecie (poki co to sa tylko obrazenia od bohatera, ale kiedys bedziemy tu obliczac tez dodatkowe perki z broni itp.)")]
      public float TapDamage;
@@ -50,20 +51,20 @@ public class HeroManager : MonoBehaviour
      void Awake()
      {
         economyManager = GetComponent<EconomyManager>();
+        saveManager = GetComponent<SaveManager>();
 
         #region assigningHeroesSlots
         mainHeroSlot = GameObject.Find("MainHeroSlot");
         fighterSlot = GameObject.Find("Fighter");
         rangerSlot = GameObject.Find("Ranger");
         supportSlot = GameObject.Find("Support");
-        shamanSlot = GameObject.Find("Shaman");     
+        shamanSlot = GameObject.Find("Shaman");
         #endregion
-        UpdateStats();
      }
 
     void Start()
     {
-        
+        UpdateStats();
     }
 
     // Update is called once per frame
@@ -104,7 +105,6 @@ public class HeroManager : MonoBehaviour
         }
         GameObject b = Instantiate(economyManager.EquipedWeapon);
         b.transform.SetParent(weaponSocket.transform, false);
-        print(b.transform.position + b.name);
 
         if (fighterSlot.transform.childCount > 0)
         {
@@ -179,6 +179,8 @@ public class HeroManager : MonoBehaviour
         LootC = SupportAdditionalHero.LootC;
         LootD = SupportAdditionalHero.LootD;
         #endregion
+
+        saveManager.SaveGame();
 }
 
 
