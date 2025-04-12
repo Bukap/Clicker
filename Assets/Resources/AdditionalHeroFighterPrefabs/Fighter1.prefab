@@ -17,6 +17,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -6389853063848088838, guid: 65683c27a8fd5a8458b8a9b03d157322, type: 3}
     - target: {fileID: 1318649370010904560, guid: e616cdb2c2d8dcc4db6f429a30b1a50c, type: 3}
+      propertyPath: Description
+      value: 'Fighter1
+
+        Damage: 14
+
+        AttackSpeed:1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318649370010904560, guid: e616cdb2c2d8dcc4db6f429a30b1a50c, type: 3}
       propertyPath: TimeFighter
       value: 1
       objectReference: {fileID: 0}

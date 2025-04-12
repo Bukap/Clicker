@@ -67,22 +67,23 @@ public class AdditionalHero : MonoBehaviour
 
     public string AddDescription()
     {
+        initializeName();
         switch (gameObject.tag)
         {
             case "Fighter":
-                Description = Name + "\n" + "Damage: " + DamagePerTimeFighter + "\n" + "AttackSpeed:" + TimeFighter;
+                Description = name + "\n" + "Damage: " + DamagePerTimeFighter + "\n" + "AttackSpeed:" + TimeFighter;
 
                 break;
             case "Ranger":
-                Description = Name + "\n" + "Damage: " + DamagePerTimeRanger + "\n" + "ExtraDamagePer" + Xattacks + "\n" + "AttackSpeed:" + TimeRanger;
+                Description = name + "\n" + "Damage: " + DamagePerTimeRanger + "\n" + "ExtraDamagePer" + Xattacks + "\n" + "AttackSpeed:" + TimeRanger;
 
                 break;
             case "Support":
-                Description = Name + "\n" + "MainHeroFlatDamageBoost: " + MainHeroFlatDamageBoost + "\n" + "SideHeroFlatDamageBoost: " + SideHeroFlatDamageBoost;
+                Description = name + "\n" + "MainHeroFlatDamageBoost: " + MainHeroFlatDamageBoost + "\n" + "SideHeroFlatDamageBoost: " + SideHeroFlatDamageBoost;
 
                 break;
             case "Shaman":
-                Description = Name + "\n" + "LootABoost: " + LootA + "\n" + "LootBBoost: " + LootB + "\n" + "LootCBoost: " + LootC + "\n" + "LootDBoost: " + LootD + "\n";
+                Description = name + "\n" + "LootABoost: " + LootA + "\n" + "LootBBoost: " + LootB + "\n" + "LootCBoost: " + LootC + "\n" + "LootDBoost: " + LootD + "\n";
 
                 break;
         }

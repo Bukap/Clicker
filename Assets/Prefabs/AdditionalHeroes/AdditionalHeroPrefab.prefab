@@ -104,7 +104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 
-  Image: {fileID: 0}
+  UIimage: {fileID: 0}
+  Description: 
   DamagePerTimeFighter: 0
   TimeFighter: 0
   DamagePerTimeRanger: 0
