@@ -12,8 +12,9 @@ public class AdditionalHero : MonoBehaviour
 {
 
     public string Name;
-    public Sprite UIimage; 
+    public Sprite UIimage;
     public string Description;
+    public int Level;
 
     [Header("Fighter")]
     [Tooltip("Obrazenia co czas od tego konkretnego bohatera")]
@@ -71,19 +72,19 @@ public class AdditionalHero : MonoBehaviour
         switch (gameObject.tag)
         {
             case "Fighter":
-                Description = name + "\n" + "Damage: " + DamagePerTimeFighter + "\n" + "AttackSpeed:" + TimeFighter;
+                Description = name + "\n" + "Level: " + Level +"\n" + "Damage: " + DamagePerTimeFighter + "\n" + "AttackSpeed:" + TimeFighter;
 
                 break;
             case "Ranger":
-                Description = name + "\n" + "Damage: " + DamagePerTimeRanger + "\n" + "ExtraDamagePer" + Xattacks + "\n" + "AttackSpeed:" + TimeRanger;
+                Description = name + "\n" + "Level: " + Level + "\n" + "Damage: " + DamagePerTimeRanger + "\n" + "ExtraDamagePer" + Xattacks + "\n" + "AttackSpeed:" + TimeRanger;
 
                 break;
             case "Support":
-                Description = name + "\n" + "MainHeroFlatDamageBoost: " + MainHeroFlatDamageBoost + "\n" + "SideHeroFlatDamageBoost: " + SideHeroFlatDamageBoost;
+                Description = name + "\n" + "Level: " + Level + "\n" + "MainHeroFlatDamageBoost: " + MainHeroFlatDamageBoost + "\n" + "SideHeroFlatDamageBoost: " + SideHeroFlatDamageBoost;
 
                 break;
             case "Shaman":
-                Description = name + "\n" + "LootABoost: " + LootA + "\n" + "LootBBoost: " + LootB + "\n" + "LootCBoost: " + LootC + "\n" + "LootDBoost: " + LootD + "\n";
+                Description = name + "\n" + "Level: " + Level + "\n" + "LootABoost: " + LootA + "\n" + "LootBBoost: " + LootB + "\n" + "LootCBoost: " + LootC + "\n" + "LootDBoost: " + LootD + "\n";
 
                 break;
         }
@@ -108,6 +109,8 @@ public class AdditionalHeroEditor : Editor
         EditorGUILayout.PropertyField(Name);
         SerializedProperty UIimage = serializedObject.FindProperty("UIimage");
         EditorGUILayout.PropertyField(UIimage);
+        SerializedProperty Level = serializedObject.FindProperty("Level");
+        EditorGUILayout.PropertyField(Level);
 
         switch (gameObject.tag)
         {

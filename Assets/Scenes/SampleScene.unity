@@ -3209,6 +3209,7 @@ GameObject:
   - component: {fileID: 519420036}
   - component: {fileID: 519420037}
   - component: {fileID: 519420038}
+  - component: {fileID: 519420039}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -3419,10 +3420,10 @@ MonoBehaviour:
   OwnedAdditionalHeroesRangers: []
   OwnedAdditionalHeroesSupports: []
   OwnedAdditionalHeroesShamans: []
-  Currency1: 
-  Currency2: 
-  Currency3: 
-  Currency4: 
+  Currency1: 0
+  Currency2: 0
+  Currency3: 0
+  Currency4: 0
   EquipedWeapon: {fileID: 8301151196936826246, guid: 298dee612a812de478772141d6c23472, type: 3}
   EquipedMainHero: {fileID: 3021035807795341949, guid: d5236cd01e9a85a4ca6d33a8dd062300, type: 3}
   EquipedAdditionalHeroesFighter: {fileID: 1857027241636242231, guid: c7bded87f60bf374abe09b1df52de9fd, type: 3}
@@ -3430,6 +3431,18 @@ MonoBehaviour:
   EquipedAdditionalHeroesSupport: {fileID: 1857027241636242231, guid: c0cfd05cd1f965d40b52c24b49e43c1e, type: 3}
   EquipedAdditionalHeroesShaman: {fileID: 1857027241636242231, guid: 92774b40d34bdd4478cfb2580f85fcbe, type: 3}
   equipment: []
+--- !u!114 &519420039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6f3257996fe23428773d7e8c9d218a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &562435064
 GameObject:
   m_ObjectHideFlags: 0
@@ -3442,7 +3455,7 @@ GameObject:
   - component: {fileID: 562435067}
   - component: {fileID: 562435066}
   m_Layer: 0
-  m_Name: Text (TMP) (2)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6455,7 +6468,7 @@ GameObject:
   - component: {fileID: 1061842076}
   - component: {fileID: 1061842075}
   m_Layer: 0
-  m_Name: Text (TMP) (1)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10035,7 +10048,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1563984101}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 519420038}
+        m_TargetAssemblyTypeName: EconomyManager, Assembly-CSharp
+        m_MethodName: LevelUpMainHero
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1563984101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10098,7 +10123,7 @@ GameObject:
   - component: {fileID: 1585350165}
   - component: {fileID: 1585350164}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10650,7 +10675,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1630850832}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 519420038}
+        m_TargetAssemblyTypeName: EconomyManager, Assembly-CSharp
+        m_MethodName: LevelUpSideHero
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1630850832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12429,7 +12466,7 @@ GameObject:
   - component: {fileID: 1753130735}
   - component: {fileID: 1753130734}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

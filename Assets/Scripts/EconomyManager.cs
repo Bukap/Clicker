@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class EconomyManager : MonoBehaviour
 {
     private HeroManager heroManager;
+    private UIManager uiManager;
 
     [SerializeField] private GameObject equipButtonUI;
     [SerializeField] private GameObject swapPopup;
@@ -22,10 +23,10 @@ public class EconomyManager : MonoBehaviour
     public List<GameObject> OwnedAdditionalHeroesSupports;
     public List<GameObject> OwnedAdditionalHeroesShamans;
 
-    public List<uint> Currency1;
-    public List<uint> Currency2;
-    public List<uint> Currency3;
-    public List<uint> Currency4;
+    public uint Currency1;
+    public uint Currency2;
+    public uint Currency3;
+    public uint Currency4;
 
     public GameObject EquipedWeapon;
     public GameObject EquipedMainHero;
@@ -36,16 +37,18 @@ public class EconomyManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> equipment = new List<GameObject>();
 
+
+
     void Awake()
      {
-        heroManager = GetComponent<HeroManager>();
+        heroManager = GetComponent<HeroManager>();        
+        uiManager = GetComponent<UIManager>();
         loadPrefabs();
     }
 
     void Start()
     {
-        // Zrobic ekwipunek integralny z UI
-        // Skurwysyn usuwa obiekty z listy owned
+        uiManager.CurrencyUpdate();
     }
 
     
@@ -186,4 +189,28 @@ public class EconomyManager : MonoBehaviour
         heroManager.UpdateStats();
     }
 
+    public void LevelUpSideHero()
+    {
+        EquipedAdditionalHeroesFighter.GetComponent<AdditionalHero>().Level++;
+        EquipedAdditionalHeroesRanger.GetComponent<AdditionalHero>().Level++;
+        EquipedAdditionalHeroesSupport.GetComponent<AdditionalHero>().Level++;
+        EquipedAdditionalHeroesShaman.GetComponent<AdditionalHero>().Level++;
+
+        heroManager.UpdateStats();
+    }
+    public void LevelUpMainHero()
+    {
+        EquipedMainHero.GetComponent<MainHero>().Level++;
+
+        heroManager.UpdateStats();
+    }
+    public void AddCurrency()
+    {
+        Currency1++;
+        Currency2++;
+        Currency3++;
+        Currency4++;
+
+        uiManager.CurrencyUpdate();
+    }
 }

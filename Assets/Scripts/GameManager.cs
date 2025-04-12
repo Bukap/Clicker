@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     private AudioManager audioManager;
 
+    private SaveManager saveManager;
     [HideInInspector]
     public float UIHealthBarMaxWidth;
 
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
         heroManager = GetComponent<HeroManager>();
         vFXManager = GetComponent<VFXManager>();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        saveManager = GetComponent<SaveManager>();
 
         UIHealthBarMaxWidth = GameObject.Find("HealthDisplay").GetComponent<RectTransform>().sizeDelta.x;
         bossBar = GameObject.Find("BossBarDisplay");
@@ -52,14 +54,14 @@ public class GameManager : MonoBehaviour
         startBossButton = GameObject.Find("StartBoss");
         
         maxBossBarWidthUI = bossBar.GetComponent<RectTransform>().sizeDelta.x;
-
-
-
+        //saveManager.SaveGame();
+        
     }
 
     void Start()
     {
-        
+        saveManager.LoadGame();
+
         bossBarPointsToWidthUI = maxBossBarWidthUI / maxBossBarPoints;
 
         BossBarUIUpdate();

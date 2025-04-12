@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MainHero : MonoBehaviour
 {
+    public int Level;
     [Tooltip("Obrazenia od tego konkretnego bohatera. Dodawane do tapowania")]
     public float Damage;
     [Tooltip("Nazwa wyswietlana w grze")]
