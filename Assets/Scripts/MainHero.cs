@@ -11,12 +11,19 @@ public class MainHero : MonoBehaviour
     public string Name;
     [Tooltip("Obrazek wyswietlany w UI")]
     public Sprite UIimage;
+
     public string Description;
 
-     void Start()
+    public Animator animator;
+
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    void Start()
     {
         Name = gameObject.name;
-
     }
 
     public string AddDescription()

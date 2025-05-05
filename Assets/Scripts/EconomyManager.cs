@@ -34,6 +34,15 @@ public class EconomyManager : MonoBehaviour
     public GameObject EquipedAdditionalHeroesRanger;
     public GameObject EquipedAdditionalHeroesSupport;
     public GameObject EquipedAdditionalHeroesShaman;
+    
+    //Instances on the screen
+
+    public GameObject EquipedWeaponInstance;
+    public GameObject EquipedMainHeroInstance;
+    public GameObject EquipedAdditionalHeroesFighterInstance;
+    public GameObject EquipedAdditionalHeroesRangerInstance;
+    public GameObject EquipedAdditionalHeroesSupportInstance;
+    public GameObject EquipedAdditionalHeroesShamanInstance;
 
     [SerializeField] private List<GameObject> equipment = new List<GameObject>();
 
