@@ -20,6 +20,8 @@ PrefabInstance:
       propertyPath: Description
       value: 'Fighter1
 
+        Level: 0
+
         Damage: 14
 
         AttackSpeed:1'

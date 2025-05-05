@@ -16,7 +16,7 @@ public class SaveManager : MonoBehaviour
         economyManager = GetComponent<EconomyManager>();
     }
 
-    SaveData ReadGameData()
+    private SaveData ReadGameData()
     {
         SaveData saveData = new SaveData();
 
@@ -41,9 +41,6 @@ public class SaveManager : MonoBehaviour
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(savePath, json);
 
-        Debug.Log("Zapisano dane:");
-        Debug.Log(json);
-        Debug.Log("Œcie¿ka zapisu: " + savePath);
     }
 
     private void ApplyGameData(SaveData data)
@@ -65,9 +62,7 @@ public class SaveManager : MonoBehaviour
     {
         if (File.Exists(savePath))
         {
-            string json = File.ReadAllText(savePath);
-            Debug.Log("Odczytano dane:");
-            Debug.Log(json);           
+            string json = File.ReadAllText(savePath);         
             SaveData data = JsonUtility.FromJson<SaveData>(json);
             ApplyGameData(data);
         }

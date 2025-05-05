@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     private VFXManager vFXManager;
 
     private AudioManager audioManager;
+
+    private EconomyManager economyManager;
 
     private SaveManager saveManager;
     [HideInInspector]
@@ -40,6 +43,11 @@ public class GameManager : MonoBehaviour
     private float timerRanger;
     private int rangerHitCounter;
 
+    private float tapTimeout;
+    private float lastTapTime = -999f;
+    private float tapInterval = 0.5f; // initial guess
+    private bool isAnimating = false;
+
     private void Awake()
     {
         enemyManager = GetComponent<EnemyManager>();
@@ -47,6 +55,7 @@ public class GameManager : MonoBehaviour
         vFXManager = GetComponent<VFXManager>();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         saveManager = GetComponent<SaveManager>();
+        economyManager = GetComponent<EconomyManager>();
 
         UIHealthBarMaxWidth = GameObject.Find("HealthDisplay").GetComponent<RectTransform>().sizeDelta.x;
         bossBar = GameObject.Find("BossBarDisplay");
@@ -66,6 +75,7 @@ public class GameManager : MonoBehaviour
 
         BossBarUIUpdate();
 
+        //StartCoroutine(animationSpeedLoop());
     }
 
 
@@ -83,6 +93,7 @@ public class GameManager : MonoBehaviour
 
         perTimeDamageCallRanger();
 
+        animationSpeed();
     }
 
     private void perTimeDamageCallFighter()
@@ -126,6 +137,7 @@ public class GameManager : MonoBehaviour
             enemyManager.currentEnemy.GetComponent<Enemy>().DamageEnemy(heroManager.TapDamage);
             vFXManager.OnScreenMainHeroAttackEffect();
             audioManager.PlaySFX("Wind");
+            
         }
     }
 
@@ -158,7 +170,28 @@ public class GameManager : MonoBehaviour
 
 
 
+    private void animationSpeed()
+    {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            tapTimeout = tapInterval < .5f ? tapInterval : .5f;
 
+            float timeNow = Time.time;
+            tapInterval = timeNow - lastTapTime;
+            lastTapTime = timeNow;
+            isAnimating = true;
+        }
 
+        if (Time.time - lastTapTime > tapTimeout)
+        {
+            economyManager.EquipedMainHeroInstance.GetComponent<MainHero>().animator.speed = 0;
+            return;
+        }
+        else
+        {
+            float speed = 1f / Mathf.Max(tapInterval, 0.1f); // avoid divide by zero
 
+            economyManager.EquipedMainHeroInstance.GetComponent<MainHero>().animator.speed = speed;
+        }         
+    }
 }

@@ -327,7 +327,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7443756053782179069, guid: 16c5a795c87dfd94ea39792ba0f38956, type: 3}
+  m_Sprite: {fileID: -4007835608349859182, guid: abf2c31cb967d864082f53957bdbe249, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1631,6 +1631,8 @@ MonoBehaviour:
   min: 0
   max: 0
   horizontal: 0
+  itemCellWidth: 350
+  itemCellHeight: 0
 --- !u!114 &267412046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1932,6 +1934,8 @@ MonoBehaviour:
   min: 0
   max: 200
   horizontal: 1
+  itemCellWidth: 290
+  itemCellHeight: 0
 --- !u!114 &312873566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3337,6 +3341,8 @@ MonoBehaviour:
   currentBossBarPoints: 0
   bossBarPointPerKill: 50
   bossBarPointsToWidthUI: 0
+  tapTimeout: 0
+  tapInterval: 0.5
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3430,6 +3436,12 @@ MonoBehaviour:
   EquipedAdditionalHeroesRanger: {fileID: 1857027241636242231, guid: 993f88575b45e4040a56b880605e82c7, type: 3}
   EquipedAdditionalHeroesSupport: {fileID: 1857027241636242231, guid: c0cfd05cd1f965d40b52c24b49e43c1e, type: 3}
   EquipedAdditionalHeroesShaman: {fileID: 1857027241636242231, guid: 92774b40d34bdd4478cfb2580f85fcbe, type: 3}
+  EquipedWeaponInstance: {fileID: 0}
+  EquipedMainHeroInstance: {fileID: 0}
+  EquipedAdditionalHeroesFighterInstance: {fileID: 0}
+  EquipedAdditionalHeroesRangerInstance: {fileID: 0}
+  EquipedAdditionalHeroesSupportInstance: {fileID: 0}
+  EquipedAdditionalHeroesShamanInstance: {fileID: 0}
   equipment: []
 --- !u!114 &519420039
 MonoBehaviour:
@@ -4948,6 +4960,8 @@ MonoBehaviour:
   min: 0
   max: 0
   horizontal: 0
+  itemCellWidth: 350
+  itemCellHeight: 0
 --- !u!1 &784507227
 GameObject:
   m_ObjectHideFlags: 0
@@ -8757,6 +8771,8 @@ MonoBehaviour:
   min: 0
   max: 0
   horizontal: 0
+  itemCellWidth: 350
+  itemCellHeight: 0
 --- !u!1 &1380487951
 GameObject:
   m_ObjectHideFlags: 0
@@ -9184,10 +9200,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2647022946791658104, guid: 7ed76f90f80d1834aa9b2e7b1f4b8079, type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3319182694340883796, guid: 7ed76f90f80d1834aa9b2e7b1f4b8079, type: 3}
       propertyPath: m_SortingOrder
       value: 19
       objectReference: {fileID: 0}
+    - target: {fileID: 5754558564459445326, guid: 7ed76f90f80d1834aa9b2e7b1f4b8079, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1440381823}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8163027790337451064, guid: 7ed76f90f80d1834aa9b2e7b1f4b8079, type: 3}
@@ -9197,6 +9221,11 @@ PrefabInstance:
 --- !u!4 &1440381821 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1955814360660493181, guid: 7ed76f90f80d1834aa9b2e7b1f4b8079, type: 3}
+  m_PrefabInstance: {fileID: 1440381820}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1440381823 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2647022946791658104, guid: 7ed76f90f80d1834aa9b2e7b1f4b8079, type: 3}
   m_PrefabInstance: {fileID: 1440381820}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1484253097
@@ -12720,6 +12749,8 @@ MonoBehaviour:
   min: 0
   max: 0
   horizontal: 0
+  itemCellWidth: 350
+  itemCellHeight: 0
 --- !u!114 &1802283185
 MonoBehaviour:
   m_ObjectHideFlags: 0

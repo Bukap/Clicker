@@ -95,6 +95,7 @@ public class HeroManager : MonoBehaviour
         GameObject a = Instantiate(economyManager.EquipedMainHero);
         a.transform.SetParent(mainHeroSlot.transform,false);
         weaponSocket = a.GetComponentsInChildren<Transform>(true).FirstOrDefault(t => t.name == "WeaponSocket")?.gameObject;
+        economyManager.EquipedMainHeroInstance = a;
 
         if (weaponSocket.transform.childCount > 0)
         {
@@ -105,6 +106,7 @@ public class HeroManager : MonoBehaviour
         }
         GameObject b = Instantiate(economyManager.EquipedWeapon);
         b.transform.SetParent(weaponSocket.transform, false);
+        economyManager.EquipedWeaponInstance = b;
 
         if (fighterSlot.transform.childCount > 0)
         {
@@ -115,6 +117,7 @@ public class HeroManager : MonoBehaviour
         }
         GameObject c = Instantiate(economyManager.EquipedAdditionalHeroesFighter);
         c.transform.SetParent(fighterSlot.transform, false);
+        economyManager.EquipedAdditionalHeroesFighterInstance = c;
 
         if (rangerSlot.transform.childCount > 0)
         {
@@ -125,6 +128,7 @@ public class HeroManager : MonoBehaviour
         }
         GameObject d = Instantiate(economyManager.EquipedAdditionalHeroesRanger);
         d.transform.SetParent(rangerSlot.transform, false);
+        economyManager.EquipedAdditionalHeroesRangerInstance = d;
 
         if (shamanSlot.transform.childCount > 0)
         {
@@ -135,6 +139,7 @@ public class HeroManager : MonoBehaviour
         }
         GameObject e = Instantiate(economyManager.EquipedAdditionalHeroesShaman);
         e.transform.SetParent(shamanSlot.transform, false);
+        economyManager.EquipedAdditionalHeroesShamanInstance = e;
 
         if (supportSlot.transform.childCount > 0)
         {
@@ -145,6 +150,8 @@ public class HeroManager : MonoBehaviour
         }
         GameObject f = Instantiate(economyManager.EquipedAdditionalHeroesSupport);
         f.transform.SetParent(supportSlot.transform, false);
+        economyManager.EquipedAdditionalHeroesSupportInstance = f;
+
     }
 
     public void UpdateStats()
